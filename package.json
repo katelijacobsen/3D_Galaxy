@@ -9,6 +9,10 @@
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://katelijacobsen.github.io/3D_Galaxy"
+  },
   "devDependencies": {
     "gh-pages": "^6.1.1",
     "vite": "^5.3.1"
