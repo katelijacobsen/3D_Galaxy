@@ -13,6 +13,13 @@ import { VerticalBlurShader } from "three/examples/jsm/shaders/VerticalBlurShade
 const scene = new THREE.Scene();
 scene.fog = new THREE.Fog(0xff8cde, 0, 30);
 
+
+//Create Texture for the sphere with image 
+const texture = new THREE.TextureLoader().load( "/test_img.jpg" );
+texture.wrapS = THREE.RepeatWrapping;
+texture.wrapT = THREE.RepeatWrapping;
+texture.repeat.set( 4, 4 );
+
 // Function to create a radial gradient texture (Background)
 function createRadialGradientTexture() {
   const canvas = document.createElement("canvas");
@@ -50,7 +57,7 @@ scene.background = createRadialGradientTexture();
 
 // Create our sphere; shape
 const sphereGeometry = new THREE.SphereGeometry(2, 54, 54);
-const sphereMaterial = new THREE.MeshStandardMaterial({ color: "#ff8cf5" });
+const sphereMaterial = new THREE.MeshStandardMaterial({ map:texture, metalness:0.2, roughness:1 });
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 scene.add(sphere);
 
@@ -119,7 +126,7 @@ function createStar(radius, innerRadius, numPoints, color, position) {
     bevelThickness: 0.025,
   };
   const starGeometry = new THREE.ExtrudeGeometry(starShape, extrudeSettings);
-  const starMaterial = new THREE.MeshStandardMaterial({ color: color });
+  const starMaterial = new THREE.MeshStandardMaterial({ color: color, metalness:0.2, roughness:0.15 });
   const star = new THREE.Mesh(starGeometry, starMaterial);
   star.position.set(position.x, position.y, position.z);
   scene.add(star);
@@ -157,7 +164,7 @@ function createStar2(radius, innerRadius, numPoints, color, position) {
     starShape2,
     extrudeStarSettings
   );
-  const starMaterial2 = new THREE.MeshStandardMaterial({ color: color });
+  const starMaterial2 = new THREE.MeshStandardMaterial({ color: color, metalness:0.2, roughness:0.15 });
   const star2 = new THREE.Mesh(star2Geometry, starMaterial2);
   star2.position.set(position.x, position.y, position.z);
   scene.add(star2);
@@ -186,7 +193,7 @@ const sizes = {
 
 // Add Light to the scene
 const light = new THREE.PointLight(0xff8cf5, 100, 100);
-light.position.set(5, 5, 5); // X, Y, Z Coordinates
+light.position.set(1, 3, 3); // X, Y, Z Coordinates //LeftRight / UpDown / FrontBack
 scene.add(light);
 
 // Add ambient light to reduce shadow contrast
