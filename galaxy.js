@@ -92,7 +92,7 @@ torus.rotation.set(2, 0, 0); // Position the torus to the left of the sphere
 scene.add(torus);
 
 // Create another torus
-const torusGeometry2 = new THREE.TorusGeometry(4, 0.1, 30, 500);
+const torusGeometry2 = new THREE.TorusGeometry(3.5, 0.1, 30, 500);
 const torusMaterial2 = new THREE.MeshStandardMaterial({
   color: "#0d3dc1",
   metalness: 0.5,
