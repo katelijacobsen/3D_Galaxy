@@ -60,12 +60,24 @@ const sphereGeometry = new THREE.SphereGeometry(2, 54, 54);
 const sphereMaterial = new THREE.MeshStandardMaterial({ map:texture, metalness:0.2, roughness:1 });
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 scene.add(sphere);
+// Create our sphere; shape
+const sphereGeometry2 = new THREE.SphereGeometry(0.5, 54, 54);
+const sphereMaterial2 = new THREE.MeshStandardMaterial({ color: "#0d3dc1", metalness:0.2, roughness:1 });
+const sphere2 = new THREE.Mesh(sphereGeometry2, sphereMaterial2);
+sphere2.position.set(2, 1, 5); // Position the cube to the right of the sphere
+scene.add(sphere2);
+// Create our sphere; shape
+const sphereGeometry3 = new THREE.SphereGeometry(1, 54, 54);
+const sphereMaterial3 = new THREE.MeshStandardMaterial({ color: "#ffffff", metalness:0.2, roughness:1 });
+const sphere3 = new THREE.Mesh(sphereGeometry3, sphereMaterial3);
+sphere3.position.set(-7, -2, -2); // Position the cube to the right of the sphere
+scene.add(sphere3);
 
 // Create a cube
 const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
 const cubeMaterial = new THREE.MeshStandardMaterial({ color: "#6700CE" });
 const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-cube.position.set(5, -2, 0); // Position the cube to the right of the sphere
+//cube.position.set(15, 20, 0); // Position the cube to the right of the sphere
 
 // Create a torus
 const torusGeometry = new THREE.TorusGeometry(2.8, 0.1, 30, 500);
@@ -90,6 +102,17 @@ const torus2 = new THREE.Mesh(torusGeometry2, torusMaterial2);
 torus2.position.set(0, 0, 0);
 torus2.rotation.set(2, 0, 0); // Position the torus to the left of the sphere
 scene.add(torus2);
+// Create another torus
+const torusGeometry3 = new THREE.TorusGeometry(1.5, 0.05, 10, 8);
+const torusMaterial3 = new THREE.MeshStandardMaterial({
+  color: "#ffc800",
+  metalness: 0.5,
+  roughness: 0.2,
+});
+const torus3 = new THREE.Mesh(torusGeometry3, torusMaterial3);
+torus3.position.set(-7, -2, -2);
+torus3.rotation.set(5, 2, 0); // Position the torus to the left of the sphere
+scene.add(torus3);
 
 // Function to create a 3D star shape
 function createStarShape(radius, innerRadius, numPoints) {
@@ -275,6 +298,18 @@ const loop = () => {
   // Rotate each object individually
   sphere.rotation.x += 0.002;
   sphere.rotation.y += 0.002;
+
+  torus.rotation.x += 0.002;
+  torus.rotation.y += 0.002;
+  torus.rotation.z += 0.002;
+
+  torus2.rotation.x += 0.007;
+  torus2.rotation.y += 0.007;
+  torus2.rotation.z += 0.007;
+
+  torus3.rotation.x += 0.007;
+  torus3.rotation.y += 0.007;
+  torus3.rotation.z += 0.007;
 
   cube.rotation.x += 0.002;
   cube.rotation.y += 0.002;
