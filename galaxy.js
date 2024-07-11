@@ -256,11 +256,11 @@ const bloomPass = new UnrealBloomPass(
 );
 composer.addPass(bloomPass);
 
-//Add the blur pass
+//Add the blur pass (I set it to 0 for just comparing)
 const hBlur = new ShaderPass(HorizontalBlurShader);
 const vBlur = new ShaderPass(VerticalBlurShader);
-hBlur.uniforms["h"].value = 0.5 / window.innerWidth;
-vBlur.uniforms["v"].value = 0.5 / window.innerHeight;
+hBlur.uniforms["h"].value = 0.0 / window.innerWidth;
+vBlur.uniforms["v"].value = 0.0 / window.innerHeight;
 composer.addPass(hBlur);
 composer.addPass(vBlur);
 
