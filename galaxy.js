@@ -25,7 +25,7 @@ function createRadialGradientTexture() {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
 
-  // Set canvas size
+  // Set canvas size. Make a 1:1 canvas first. 
   canvas.width = 512;
   canvas.height = 512;
 
@@ -43,7 +43,7 @@ function createRadialGradientTexture() {
   gradient.addColorStop(0, "#F1DFE3");
   gradient.addColorStop(1, "#becef0");
 
-  // Apply gradient to canvas
+  // Apply gradient to canvas. You already have defined the width and height in that case  you can just write canvas.height/width. 
   context.fillStyle = gradient;
   context.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -55,16 +55,16 @@ function createRadialGradientTexture() {
 // Create radial gradient background texture and set as scene background
 scene.background = createRadialGradientTexture();
 
-// Create our sphere; shape
-const sphereGeometry = new THREE.SphereGeometry(2, 54, 54);
+// Create our sphere; shape. Here you tell the size and how you want to define the material. This sphere is the one in the middle. The last units of the end are the ones that makes it round. 
+const sphereGeometry = new THREE.SphereGeometry(2,54, 54);
 const sphereMaterial = new THREE.MeshStandardMaterial({ map:texture, metalness:0.2, roughness:1 });
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 scene.add(sphere);
-// Create our sphere; shape
+// Create our sphere; shape. You do the same.
 const sphereGeometry2 = new THREE.SphereGeometry(0.5, 54, 54);
 const sphereMaterial2 = new THREE.MeshStandardMaterial({ color: "#0d3dc1", metalness:0.2, roughness:1 });
 const sphere2 = new THREE.Mesh(sphereGeometry2, sphereMaterial2);
-sphere2.position.set(2, 1, 5); // Position the cube to the right of the sphere
+sphere2.position.set(2, 1, 5); // Position the cube to the right of the sphere. Imagine it as the coordinates you want to place the sphere.
 scene.add(sphere2);
 // Create our sphere; shape
 const sphereGeometry3 = new THREE.SphereGeometry(1, 54, 54);
@@ -79,7 +79,7 @@ const cubeMaterial = new THREE.MeshStandardMaterial({ color: "#6700CE" });
 const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 //cube.position.set(15, 20, 0); // Position the cube to the right of the sphere
 
-// Create a torus
+// Create a torus. Basically the rings around the sphere to make it look like a planet. 
 const torusGeometry = new THREE.TorusGeometry(2.8, 0.1, 30, 500);
 const torusMaterial = new THREE.MeshStandardMaterial({
   color: "#0d3dc1",
